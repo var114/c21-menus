@@ -1,0 +1,37 @@
+doctype
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    block title
+    meta(name='description', content='Menus')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //- meta(name="apple-mobile-web-app-capable" content="yes")
+    //- meta(name="apple-mobile-web-app-status-bar-style" content="black")
+    //- link(rel="apple-touch-icon" href="/red.png")
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/flat-ui.css')
+    link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='/css/tablesaw.temp.css')
+    // script(type="text/javascript" src="/js/jquery-2.0.3.min.js")
+
+    body
+
+    section.container
+      block content
+
+    //- running block scripts
+
+    script(type="text/javascript" src="/underscore/underscore.js")
+    include _flat_ui_scripts.html
+    script(type="text/javascript" src='https://cdn.firebase.com/js/client/1.0.15/firebase.js')
+    //-script(type="text/javascript" src="/js/firebase.js")
+    script(type="text/javascript" src="/js/tablesaw.stackonly.js")
+    script(type="text/javascript" src="/react/react.min.js")
+    script(type="text/javascript" src="/ReactFire/js/ReactFireMixin.min.js")
+    script(type="text/javascript" src="/js/scripts.js")
+   
+    
+    if devMode
+      script(type="text/javascript").
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
