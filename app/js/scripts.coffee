@@ -26,7 +26,7 @@ foodListProps =
   #     "data-toggle": "switch"
   
 #https://luminous-fire-1310.firebaseio.com/products
-ProductsURL = "https://glowing-fire-9751.firebaseio.com/products"
+ProductsURL = "https://c21-menus.firebaseio.com/products"
 ProductsRef = new Firebase(ProductsURL)
 # how to render product list. just as a list nothing else. 
 

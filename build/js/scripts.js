@@ -189,7 +189,7 @@ foodListProps = {
   }
 };
 
-ProductsURL = "https://glowing-fire-9751.firebaseio.com/products";
+ProductsURL = "https://c21-menus.firebaseio.com/products";
 
 ProductsRef = new Firebase(ProductsURL);
 
