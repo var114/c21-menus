@@ -100,6 +100,7 @@ you can use the generic selector below, but it's slower:
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
+
   -webkit-font-smoothing: antialiased;
 }
 .fui-arrow-right:before {

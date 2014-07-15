@@ -1,0 +1,28 @@
+.c21-food-menu {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-bottom: 3em;
+  padding: 1.5em 1em 0; }
+
+.c21-food-item {
+  -webkit-flex: 1 0 300px;
+  -ms-flex: 1 0 300px;
+  flex: 1 0 300px;
+  padding: 0.5em 0 1em 1em;
+  border-bottom: 1px solid #dfdfdf; }
+
+.c21-food-item span {
+  display: inline-block;
+  float: right;
+  margin-top: -1.3em;
+  position: relative;
+  font-size: 2em; }
+
+/* just write it based on personal logic */

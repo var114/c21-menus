@@ -23,7 +23,7 @@ module.exports = React.createClass({
     }, UI.Form({
       listProps: this.props.listProps,
       firebaseRef: this.props.firebaseRef
-    }), UI.Table({
+    }), UI.Menu({
       products: this.state.products,
       listProps: this.props.listProps,
       onDestroy: this.destroy
@@ -32,14 +32,13 @@ module.exports = React.createClass({
 });
 
 
-},{"./MultiStructuralDocumentDatabaseAuthoringUI":4}],2:[function(require,module,exports){
+},{"./MultiStructuralDocumentDatabaseAuthoringUI":5}],2:[function(require,module,exports){
 var EditorUI;
 
 module.exports = EditorUI = React.createClass({
   handleSubmit: function(e) {
     var key, makeId, props, uniqueId, userInput, values, _ref;
     e.preventDefault();
-    console.log('submitting');
     values = {};
     uniqueId = "";
     makeId = function(text) {
@@ -49,6 +48,7 @@ module.exports = EditorUI = React.createClass({
     for (key in _ref) {
       props = _ref[key];
       values[key] = userInput = this.refs[key].getDOMNode().value.trim();
+      console.log(props.number);
       if (props.idMaker) {
         uniqueId = makeId(userInput);
       }
@@ -70,7 +70,7 @@ module.exports = EditorUI = React.createClass({
     return _results;
   },
   render: function() {
-    var $1, $2, key, props;
+    var $1, $2, $3, key, props;
     return R.form({
       onSubmit: this.handleSubmit
     }, (function() {
@@ -87,7 +87,16 @@ module.exports = EditorUI = React.createClass({
           id: key,
           className: props.className
         }, props.attr));
-        _results.push([$1, $2]);
+        $3 = R.button(_.extend({
+          ref: key,
+          id: key,
+          className: props.className
+        }));
+        if (props.form) {
+          _results.push([$1, $2]);
+        } else {
+          _results.push([$3]);
+        }
       }
       return _results;
     }).call(this), R.hr(null), R.button({
@@ -99,6 +108,51 @@ module.exports = EditorUI = React.createClass({
 
 
 },{}],3:[function(require,module,exports){
+var MenuUI;
+
+module.exports = MenuUI = React.createClass({
+  render: function() {
+    var id, key, product, props;
+    return R.div({
+      className: "c21-food-container"
+    }, R.div({
+      className: "c21-food-menu"
+    }, (function() {
+      var _ref, _results;
+      _ref = this.props.products;
+      _results = [];
+      for (id in _ref) {
+        product = _ref[id];
+        _results.push(R.div({
+          className: "c21-food-item",
+          key: id
+        }, (function() {
+          var _ref1, _results1;
+          _ref1 = this.props.listProps;
+          _results1 = [];
+          for (key in _ref1) {
+            props = _ref1[key];
+            if (props.number) {
+              _results1.push(R.span(null, product[key] || ' '));
+            } else {
+              _results1.push(R.div(null, product[key] || ' '));
+            }
+          }
+          return _results1;
+        }).call(this), R.div(null, R.button({
+          onClick: this.props.onDestroy.bind(this, id),
+          className: "btn btn-warning"
+        }, R.div({
+          className: "fui-cross"
+        })))));
+      }
+      return _results;
+    }).call(this)));
+  }
+});
+
+
+},{}],4:[function(require,module,exports){
 var ReactSwitch, TableUI;
 
 ReactSwitch = React.createClass({
@@ -129,7 +183,7 @@ module.exports = TableUI = React.createClass({
         _results.push(R.th(null, key));
       }
       return _results;
-    }).call(this), R.th(null, "on sale"), R.th(null, "delete"))), R.tbody(null, (function() {
+    }).call(this), R.th(null, "on sale"), R.th(null, "delete"), R.th(null, "menu"))), R.tbody(null, (function() {
       var _ref, _results;
       _ref = this.props.products;
       _results = [];
@@ -151,7 +205,9 @@ module.exports = TableUI = React.createClass({
           className: "btn btn-warning"
         }, R.span({
           className: "fui-cross"
-        })))));
+        }))), R.td(null, R.button({
+          className: "btn btn-warning"
+        }, "menu"))));
       }
       return _results;
     }).call(this)));
@@ -159,13 +215,15 @@ module.exports = TableUI = React.createClass({
 });
 
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 exports.Form = require('./Form');
 
 exports.Table = require('./Table');
 
+exports.Menu = require('./Menu');
 
-},{"./Form":2,"./Table":3}],5:[function(require,module,exports){
+
+},{"./Form":2,"./Menu":3,"./Table":4}],6:[function(require,module,exports){
 var ProductsApp, ProductsRef, ProductsURL, component, foodListProps, mountNode;
 
 window.R = React.DOM;
@@ -174,22 +232,29 @@ foodListProps = {
   title: {
     className: "form-control",
     idMaker: true,
+    form: true,
     attr: {
       placeholder: "Unique name"
     }
   },
-  teaser: {
+  price: {
     className: "form-control",
+    form: true,
+    number: true,
     attr: {
-      placeholder: "Recommend this dish to someone."
+      placeholder: "Name yo' price"
     }
   },
   ingredients: {
-    className: "tagsinput"
+    className: "tagsinput",
+    form: true
+  },
+  category: {
+    className: "btn btn-primary"
   }
 };
 
-ProductsURL = "https://c21-menus.firebaseio.com/products";
+ProductsURL = "https://glowing-fire-9751.firebaseio.com/products";
 
 ProductsRef = new Firebase(ProductsURL);
 
@@ -205,4 +270,4 @@ component = ProductsApp({
 React.renderComponent(component, mountNode);
 
 
-},{"./FireList":1}]},{},[5])
+},{"./FireList":1}]},{},[6])

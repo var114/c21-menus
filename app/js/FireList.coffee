@@ -9,7 +9,7 @@ UI = require './MultiStructuralDocumentDatabaseAuthoringUI'
 module.exports = React.createClass
   # Keep the list up-to-date with firebase
   # firebase object "id"s are JSON keys to the object 
-  # instead of one of the object's keys 
+  # intead of one of the object's keys 
   # Thus we use an Object to represent state
   mixins: [ReactFireMixin]
   componentWillMount: ->
@@ -30,7 +30,11 @@ module.exports = React.createClass
       UI.Form
         listProps: @props.listProps
         firebaseRef: @props.firebaseRef
-      UI.Table
-        products: @state.products
-        listProps: @props.listProps
-        onDestroy: @destroy
+      #UI.Table
+       # products: @state.products
+       # listProps: @props.listProps
+        #onDestroy: @destroy
+      UI.Menu
+       products: @state.products
+       listProps: @props.listProps
+       onDestroy: @destroy

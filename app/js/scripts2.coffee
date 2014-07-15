@@ -1,5 +1,5 @@
  # Remove 300ms touch delay
-# attachFastClick = requir e('fastclick')
+# attachFastClick = require('fastclick')
 # attachFastClick(document.body)
 # Js script
 
@@ -10,27 +10,19 @@ foodListProps =
   title:
     className: "form-control"
     idMaker: true
-    form: true
     attr:
       placeholder: "Unique name"
- # teaser:
-  #  className: "form-control"
-   # attr:
-    #  placeholder: "Recommend this dish to someone."
-  price:
+  teaser:
     className: "form-control"
-    form: true
-    number: true
     attr:
-      placeholder: "Name yo' price"
+      placeholder: "Recommend this dish to someone."
   ingredients:
     className: "tagsinput"
-    form: true
-
-  category:
-    className: "btn btn-primary"
-    
-  
+    # attr:
+  # notForSale:
+  #   attr:
+  #     type: "checkbox"
+  #     "data-toggle": "switch"
    
   
 #https://luminous-fire-1310.firebaseio.com/products

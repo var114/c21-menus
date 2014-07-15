@@ -1,6 +1,31 @@
-html {
+
+
+.c21-food-menu{
+  display: flex; 
+  flex-flow: row wrap;
+ justify-content: space-between;
+
+  padding-bottom: 3em;
+  padding: 1.5em 1em 0;
+
 
 }
-body {
-  // background: black;
+
+.c21-food-item{
+  flex: 1 0 300px;
+
+  padding:0.5em 0 1em 1em;
+  border-bottom: 1px solid #dfdfdf;
 }
+
+.c21-food-item span{
+  display: inline-block;
+  float: right;
+  margin-top: -1.3em;
+  position: relative;
+
+  font-size: 2em;
+
+}
+
+/* just write it based on personal logic */
